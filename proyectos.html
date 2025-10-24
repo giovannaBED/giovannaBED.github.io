@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giovanna Bedoya Maque - Proyectos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #555555;
+            background: #FAF3E0;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #8B0000 0%, #B54A4A 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #FFFFFF;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            opacity: 0.8;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #8B0000 0%, #B54A4A 100%);
+            color: #FFFFFF;
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        /* Filter Tabs */
+        .filter-section {
+            max-width: 1200px;
+            margin: -2rem auto 3rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .filter-tabs {
+            background: #FFFFFF;
+            border-radius: 50px;
+            padding: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.15);
+        }
+
+        .filter-tab {
+            padding: 0.8rem 2rem;
+            border: none;
+            background: transparent;
+            color: #555555;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .filter-tab:hover {
+            background: #FAF3E0;
+        }
+
+        .filter-tab.active {
+            background: linear-gradient(135deg, #8B0000 0%, #B54A4A 100%);
+            color: #FFFFFF;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            background: #FFFFFF;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(139, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(139, 0, 0, 0.2);
+            border-color: #D4AF37;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #FFEBD2 0%, #FAF3E0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #B54A4A;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-category {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, #8B0000 0%, #B54A4A 100%);
+            color: #FFFFFF;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            color: #8B0000;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .project-description {
+            color: #555555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #7B1113;
+            font-size: 0.9rem;
+        }
+
+        .meta-item i {
+            color: #D4AF37;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: #FFEBD2;
+            color: #7B1113;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #8B0000;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            color: #D4AF37;
+            gap: 0.8rem;
+        }
+
+        /* Featured Project */
+        .featured-project {
+            background: #FFFFFF;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(139, 0, 0, 0.15);
+            margin-bottom: 4rem;
+            border: 3px solid #D4AF37;
+        }
+
+        .featured-badge {
+            background: linear-gradient(135deg, #D4AF37 0%, #B54A4A 100%);
+            color: #FFFFFF;
+            padding: 0.5rem 1.5rem;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            padding: 3rem;
+            align-items: center;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #8B0000 0%, #B54A4A 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            font-size: 5rem;
+        }
+
+        .featured-details h2 {
+            color: #8B0000;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .featured-details p {
+            color: #555555;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .featured-cta {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #8B0000 0%, #B54A4A 100%);
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .featured-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(139, 0, 0, 0.3);
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            color: #8B0000;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #8B0000 0%, #D4AF37 100%);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: #555555;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #7B1113;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .featured-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 0.5rem;
+                font-size: 0.85rem;
+            }
+
+            .nav-links a {
+                padding: 0.3rem 0.6rem;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .filter-tabs {
+                border-radius: 15px;
+            }
+
+            .filter-tab {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .featured-details h2 {
+                font-size: 2rem;
+            }
+
+            .project-image {
+                height: 200px;
+            }
+        }
+
+        /* Menu toggle para móvil */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #8B0000 0%, #B54A4A 100%);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+        }
+
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">GB</a>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="acerca.html">Acerca de Mí</a></li>
+                <li><a href="proyectos.html" class="active">Proyectos</a></li>
+                <li><a href="aempro.html">AEMPRO PERÚ</a></li>
+                <li><a href="partido.html">SOMOS PERÚ</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Proyectos e Iniciativas</h1>
+        <p>Conoce los proyectos en los que estoy involucrada</p>
+    </div>
+
+    <div class="filter-section">
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">Todos</button>
+            <button class="filter-tab" data-filter="social">Social</button>
+            <button class="filter-tab" data-filter="empresarial">Empresarial</button>
+            <button class="filter-tab" data-filter="educativo">Educativo</button>
+            <button class="filter-tab" data-filter="politico">Político</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Featured Project -->
+        <div class="featured-project">
+            <div class="featured-badge">PROYECTO DESTACADO</div>
+            <div class="featured-content">
+                <div class="featured-image">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="featured-details">
+                    <h2>Nombre del Proyecto Principal</h2>
+                    <p>
+                        Descripción detallada del proyecto más importante o reciente. Explica el 
+                        impacto que está generando, los objetivos que busca alcanzar y tu rol 
+                        en el desarrollo del mismo. Menciona cifras, resultados o logros concretos 
+                        que demuestren el éxito de esta iniciativa.
+                    </p>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>2024 - Presente</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>+500 beneficiarios</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Lima, Perú</span>
+                        </div>
+                    </div>
+                    <a href="#" class="featured-cta">Ver más detalles</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Title -->
+        <div class="section-title">
+            <h2>Otros Proyectos</h2>
+            <p>Iniciativas y colaboraciones activas</p>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projectsGrid">
+            <!-- Project 1 -->
+            <div class="project-card" data-category="empresarial">
+                <div class="project-image">
+                    <span class="project-category">Empresarial</span>
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Desarrollo Empresarial</h3>
+                    <p class="project-description">
+                        Programa de fortalecimiento de capacidades empresariales para 
+                        pequeñas y medianas empresas. Incluye capacitación, mentoría 
+                        y acceso a financiamiento.
+                    </p>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>2023 - 2024</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>150 empresas</span>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Capacitación</span>
+                        <span class="tag">PYME</span>
+                        <span class="tag">Desarrollo</span>
+                    </div>
+                    <a href="#" class="project-link">
+                        Conocer más <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card" data-category="social">
+                <div class="project-image">
+                    <span class="project-category">Social</span>
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Empoderamiento Femenino</h3>
+                    <p class="project-description">
+                        Iniciativa para promover el liderazgo femenino en el sector 
+                        empresarial. Incluye talleres, networking y mentoría para 
+                        mujeres emprendedoras.
+                    </p>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>2022 - Presente</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>300+ mujeres</span>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Liderazgo</span>
+                        <span class="tag">Mujer</span>
+                        <span class="tag">Empoderamiento</span>
+                    </div>
+                    <a href="#" class="project-link">
+                        Conocer más <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card" data-category="educativo">
+                <div class="project-image">
+                    <span class="project-category">Educativo</span>
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Formación Profesional</h3>
+                    <p class="project-description">
+                        Programa de becas y capacitación técnica para jóvenes 
+                        profesionales. Enfoque en habilidades del siglo XXI y 
+                        empleabilidad.
+                    </p>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>2024</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>200 becarios</span>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Educación</span>
+                        <span class="tag">Becas</span>
+                        <span class="tag">Juventud</span>
+                    </div>
+                    <a href="#" class="project-link">
+                        Conocer más <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card" data-category="empresarial">
+                <div class="project-image">
+                    <span class="project-category">Empresarial</span>
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Red de Negocios</h3>
+                    <p class="project-description">
+                        Plataforma de networking empresarial que conecta empresarios, 
+                        inversionistas y profesionales para generar oportunidades de 
+                        negocio y colaboración.
+                    </p>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>2023 - Presente</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>500+ miembros</span>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Networking</span>
+                        <span class="tag">Negocios</span>
+                        <span class="tag">Alianzas</span>
+                    </div>
+                    <a href="#" class="project-link">
+                        Conocer más <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card" data-category="social">
+                <div class="project-image">
+                    <span class="project-category">Social</span>
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Responsabilidad Social</h3>
+                    <p class="project-description">
+                        Programa de responsabilidad social empresarial que promueve 
+                        prácticas sostenibles y compromiso con la comunidad en el 
+                        sector privado.
+                    </p>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>2023 - 2024</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>80 empresas</span>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">RSE</span>
+                        <span class="tag">Sostenibilidad</span>
+                        <span class="tag">Comunidad</span>
+                    </div>
+                    <a href="#" class="project-link">
+                        Conocer más <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card" data-category="politico">
+                <div class="project-image">
+                    <span class="project-category">Político</span>
+                    <i class="fas fa-flag"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Participación Ciudadana</h3>
+                    <p class="project-description">
+                        Iniciativa para fortalecer la participación ciudadana en 
+                        procesos democráticos y promover el liderazgo político 
+                        responsable y transparente.
+                    </p>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>2024 - Presente</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>1000+ ciudadanos</span>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Democracia</span>
+                        <span class="tag">Ciudadanía</span>
+                        <span class="tag">Política</span>
+                    </div>
+                    <a href="#" class="project-link">
+                        Conocer más <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Giovanna Bedoya Maque. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Cerrar menú al hacer clic en un enlace (móvil)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Filter functionality
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                filterTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Filter projects
+                const filter = tab.getAttribute('data-filter');
+                
+                projectCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    
+                    if (filter === 'all' || category === filter) {
+                        card.style.display = 'block';
+                        card.classList.add('fade-in');
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Animación de entrada para elementos
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card, .featured-project').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

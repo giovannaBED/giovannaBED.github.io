@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giovanna Bedoya Maque - Acerca de Mí</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #7B1113 0%, #B54A4A 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #FAF3E0;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #FAF3E0;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            opacity: 0.8;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #7B1113 0%, #B54A4A 100%);
+            color: #FAF3E0;
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            color: #FFEBD2;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: -2rem auto 4rem;
+            padding: 0 2rem;
+        }
+
+        /* Biography Section */
+        .biography-section {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+.bio-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.bio-image-container {
+    position: sticky;
+    top: 100px;
+}
+
+.bio-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 15px;
+    overflow: hidden; /* 🔹 mantiene la imagen dentro */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #7B1113 0%, #B54A4A 100%); /* fondo guinda suave */
+}
+
+.bio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 🔹 recorta sin deformar */
+    display: block;
+}
+
+        .bio-quote {
+            background: linear-gradient(135deg, #7B1113 0%, #B54A4A 100%);
+            color: #FAF3E0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            font-style: italic;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .bio-text {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+
+        .bio-text h2 {
+            color: #8B0000;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .bio-text h2:first-child {
+            margin-top: 0;
+        }
+
+        .bio-text p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .timeline-section h2 {
+            color: #8B0000;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #7B1113 0%, #B54A4A 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.6rem;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid #8B0000;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px white;
+        }
+
+        .timeline-year {
+            display: inline-block;
+            background: linear-gradient(135deg, #7B1113 0%, #B54A4A 100%);
+            color: #FAF3E0;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item h3 {
+            color: #333;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .skills-section h2 {
+            color: #8B0000;
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #8B0000;
+        }
+
+        .skill-category h3 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category i {
+            color: #8B0000;
+            font-size: 1.5rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            color: #666;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-category li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #8B0000;
+            font-weight: bold;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .values-section h2 {
+            color: #8B0000;
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #7B1113 0%, #B54A4A 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: #FAF3E0;
+            font-size: 2rem;
+        }
+
+        .value-card h3 {
+            color: #333;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background: #8B0000;
+            color: #FAF3E0;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .bio-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .bio-image-container {
+                position: relative;
+                top: 0;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .timeline-item::before {
+                left: -2.6rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 0.5rem;
+                font-size: 0.85rem;
+            }
+
+            .nav-links a {
+                padding: 0.3rem 0.6rem;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .biography-section,
+            .timeline-section,
+            .skills-section,
+            .values-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Menu toggle para móvil */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">GB</a>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="acerca.html" class="active">Acerca de Mí</a></li>
+                <li><a href="proyectos.html">Proyectos</a></li>
+                <li><a href="aempro.html">AEMPRO PERÚ</a></li>
+                <li><a href="partido.html">SOMOS PERÚ</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Acerca de Mí</h1>
+        <p>Conoce mi historia, trayectoria y valores</p>
+    </div>
+
+    <div class="container">
+        <!-- Biography Section -->
+        <section class="biography-section">
+    <div class="bio-content">
+
+        <div class="bio-image-container">
+            <div class="bio-image">
+                <img src="imagenes/estrado_1.jpg" alt="Giovanna Bedoya Maque">
+            </div>
+            <div class="bio-quote">
+                "Tu frase inspiradora o lema personal aquí"
+            </div>
+        </div>
+
+        <div class="bio-text">
+            <h2>Mi Historia</h2>
+            <p>
+                [Párrafo introductorio: Presenta quién eres, de dónde vienes y qué te motiva. 
+                Comparte los momentos clave que definieron tu camino profesional y personal. 
+                Habla sobre tus raíces, tu familia y los valores que te inculcaron desde pequeña.]
+            </p>
+            <p>
+                [Continúa con tu desarrollo profesional: Describe tu formación académica, 
+                tus primeros pasos en el mundo laboral y cómo fuiste construyendo tu carrera. 
+                Menciona los desafíos que enfrentaste y cómo los superaste.]
+            </p>
+
+            <h2>Mi Visión</h2>
+            <p>
+                [Comparte tu visión para el futuro: Qué cambios quieres ver en tu sector, 
+                en tu comunidad o en el país. Explica qué te impulsa a seguir adelante y 
+                qué legado deseas dejar.]
+            </p>
+
+            <h2>Mi Compromiso</h2>
+            <p>
+                [Describe tu compromiso con tu trabajo, tu comunidad y las causas que te 
+                importan. Explica cómo manifiestas este compromiso en tu día a día y en 
+                tus proyectos.]
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+        <!-- Timeline Section -->
+        <section class="timeline-section">
+            <h2>Trayectoria Profesional</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-year">2024 - Presente</span>
+                    <h3>Cargo/Posición Actual</h3>
+                    <p>Descripción de tu rol actual, responsabilidades principales y logros destacados. Menciona el impacto de tu trabajo.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-year">2020 - 2024</span>
+                    <h3>Cargo/Posición Anterior</h3>
+                    <p>Descripción del rol, proyectos importantes que lideraste o en los que participaste, y los resultados obtenidos.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-year">2018 - 2020</span>
+                    <h3>Otro Cargo Relevante</h3>
+                    <p>Experiencias, aprendizajes y contribuciones durante este período de tu carrera profesional.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-year">2015 - 2018</span>
+                    <h3>Formación/Inicio Profesional</h3>
+                    <p>Estudios realizados, certificaciones obtenidas o primeras experiencias profesionales relevantes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills-section">
+            <h2>Áreas de Experiencia</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-briefcase"></i> Gestión Empresarial</h3>
+                    <ul>
+                        <li>Administración estratégica</li>
+                        <li>Desarrollo organizacional</li>
+                        <li>Gestión de proyectos</li>
+                        <li>Liderazgo de equipos</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-users"></i> Liderazgo</h3>
+                    <ul>
+                        <li>Desarrollo de talento</li>
+                        <li>Gestión del cambio</li>
+                        <li>Construcción de equipos</li>
+                        <li>Mentoría y coaching</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-handshake"></i> Relaciones</h3>
+                    <ul>
+                        <li>Negociación efectiva</li>
+                        <li>Alianzas estratégicas</li>
+                        <li>Networking profesional</li>
+                        <li>Comunicación institucional</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-line"></i> Desarrollo</h3>
+                    <ul>
+                        <li>Planificación estratégica</li>
+                        <li>Innovación y emprendimiento</li>
+                        <li>Desarrollo sostenible</li>
+                        <li>Responsabilidad social</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="values-section">
+            <h2>Mis Valores</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Integridad</h3>
+                    <p>Actuar con honestidad, transparencia y coherencia en todas las acciones y decisiones.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Colaboración</h3>
+                    <p>Trabajar en equipo, valorar la diversidad y construir consensos para lograr objetivos comunes.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovación</h3>
+                    <p>Buscar constantemente nuevas formas de hacer las cosas mejor y generar valor.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Excelencia</h3>
+                    <p>Compromiso con la calidad, el mejoramiento continuo y la superación personal.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Responsabilidad Social</h3>
+                    <p>Contribuir al bienestar de la comunidad y al desarrollo sostenible del país.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Equidad</h3>
+                    <p>Promover la igualdad de oportunidades y el trato justo para todas las personas.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Giovanna Bedoya Maque. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Cerrar menú al hacer clic en un enlace (móvil)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Animación de entrada para elementos
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

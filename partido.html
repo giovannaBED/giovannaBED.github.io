@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giovanna Bedoya Maque - SOMOS PERÚ</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #555555;
+            background: #FAF3E0;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #8B0000 0%, #B54A4A 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #FFFFFF;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            opacity: 0.8;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #8B0000 0%, #B54A4A 100%);
+            color: #FFFFFF;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(212,175,55,0.2) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .partido-logo {
+            width: 220px;
+            height: 220px;
+            background: #FFFFFF;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #8B0000;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            border: 6px solid #D4AF37;
+        }
+
+        .hero-section h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+        }
+
+        .hero-section .tagline {
+            font-size: 1.6rem;
+            opacity: 0.95;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #D4AF37;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: -3rem auto 4rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Intro Section */
+        .intro-section {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 4rem 3rem;
+            box-shadow: 0 10px 40px rgba(139, 0, 0, 0.15);
+            margin-bottom: 3rem;
+            border-left: 6px solid #D4AF37;
+        }
+
+        .intro-section h2 {
+            color: #8B0000;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-section p {
+            color: #555555;
+            line-height: 1.9;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Pillars Section */
+        .pillars-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            color: #8B0000;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #8B0000 0%, #D4AF37 100%);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: #555555;
+            font-size: 1.2rem;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .pillar-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 5px 25px rgba(139, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid #D4AF37;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(212,175,55,0.05) 100%);
+            pointer-events: none;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(139, 0, 0, 0.2);
+        }
+
+        .pillar-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #8B0000 0%, #B54A4A 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 20px rgba(139, 0, 0, 0.3);
+        }
+
+        .pillar-card h3 {
+            color: #8B0000;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .pillar-card p {
+            color: #555555;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Commitment Section */
+        .commitment-section {
+            background: linear-gradient(135deg, #8B0000 0%, #B54A4A 100%);
+            border-radius: 20px;
+            padding: 4rem 3rem;
+            color: #FFFFFF;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 40px rgba(139, 0, 0, 0.2);
+        }
+
+        .commitment-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .commitment-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #D4AF37;
+        }
+
+        .commitment-text p {
+            line-height: 1.9;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .commitment-image {
+            width: 100%;
+            height: 400px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: rgba(255,255,255,0.3);
+            border: 3px solid #D4AF37;
+        }
+
+        /* Proposals Section */
+        .proposals-section {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 4rem 3rem;
+            box-shadow: 0 10px 40px rgba(139, 0, 0, 0.15);
+            margin-bottom: 3rem;
+        }
+
+        .proposals-list {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .proposal-item {
+            background: linear-gradient(135deg, #FAF3E0 0%, #FFEBD2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #8B0000;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2rem;
+            align-items: start;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .proposal-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(139, 0, 0, 0.15);
+        }
+
+        .proposal-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8B0000 0%, #B54A4A 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            font-size: 1.8rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .proposal-content h4 {
+            color: #8B0000;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .proposal-content p {
+            color: #555555;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Values Section */
+        .values-section {
+            margin-bottom: 3rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: #FFFFFF;
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(139, 0, 0, 0.1);
+            transition: transform 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .value-card:hover {
+            transform: scale(1.05);
+            border-color: #D4AF37;
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #D4AF37 0%, #B54A4A 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .value-card h4 {
+            color: #8B0000;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .value-card p {
+            color: #555555;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #D4AF37 0%, #B54A4A 100%);
+            border-radius: 20px;
+            padding: 4rem 3rem;
+            text-align: center;
+            color: #FFFFFF;
+            box-shadow: 0 10px 40px rgba(139, 0, 0, 0.15);
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 2.5rem;
+            background: #FFFFFF;
+            color: #8B0000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: #FFFFFF;
+            border: 3px solid #FFFFFF;
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #7B1113;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .commitment-content {
+                grid-template-columns: 1fr;
+            }
+
+            .commitment-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 0.5rem;
+                font-size: 0.85rem;
+            }
+
+            .nav-links a {
+                padding: 0.3rem 0.6rem;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .partido-logo {
+                width: 160px;
+                height: 160px;
+                font-size: 3.5rem;
+            }
+
+            .intro-section,
+            .proposals-section,
+            .commitment-section,
+            .cta-section {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .proposal-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        /* Menu toggle para móvil */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #8B0000 0%, #B54A4A 100%);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">GB</a>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="acerca.html">Acerca de Mí</a></li>
+                <li><a href="proyectos.html">Proyectos</a></li>
+                <li><a href="aempro.html">AEMPRO PERÚ</a></li>
+                <li><a href="partido.html" class="active">SOMOS PERÚ</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="partido-logo">
+                <i class="fas fa-flag"></i>
+            </div>
+            <h1>SOMOS PERÚ</h1>
+            <p class="tagline">Compromiso con el Desarrollo del País</p>
+            <p>
+                Trabajando por un Perú más justo, próspero y con oportunidades para todos. 
+                Compromiso, transparencia y servicio al pueblo peruano.
+            </p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Intro Section -->
+        <section class="intro-section">
+            <h2>Mi Compromiso Político</h2>
+            <p>
+                [Explica tu relación con el partido Somos Perú y qué te motivó a unirte. 
+                Describe tu rol dentro del partido y cómo contribuyes a sus objetivos. 
+                Menciona los valores que compartes con la organización política.]
+            </p>
+            <p>
+                [Detalla tu visión política para el país y cómo se alinea con los principios 
+                del partido. Explica qué cambios concretos buscas impulsar desde tu posición 
+                y cómo planeas hacerlo.]
+            </p>
+        </section>
+
+        <!-- Pillars Section -->
+        <section class="pillars-section">
+            <div class="section-header">
+                <h2>Pilares Fundamentales</h2>
+                <p>Los ejes que guían nuestro trabajo político</p>
+            </div>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Justicia Social</h3>
+                    <p>
+                        Promover la equidad y reducir las desigualdades, garantizando 
+                        acceso a servicios básicos y oportunidades para todos los peruanos.
+                    </p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Educación de Calidad</h3>
+                    <p>
+                        Invertir en educación como motor de desarrollo, mejorando la 
+                        infraestructura, capacitación docente y acceso tecnológico.
+                    </p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Salud Universal</h3>
+                    <p>
+                        Garantizar atención médica de calidad para todos, fortaleciendo 
+                        el sistema de salud pública y la prevención.
+                    </p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Desarrollo Económico</h3>
+                    <p>
+                        Fomentar el emprendimiento, apoyar a las PYME y crear un entorno 
+                        favorable para la inversión y generación de empleo digno.
+                    </p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sostenibilidad</h3>
+                    <p>
+                        Proteger el medio ambiente y promover el desarrollo sostenible, 
+                        garantizando recursos para las futuras generaciones.
+                    </p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Seguridad Ciudadana</h3>
+                    <p>
+                        Fortalecer la seguridad en las calles con prevención, tecnología 
+                        y políticas integrales de combate al crimen.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Commitment Section -->
+        <section class="commitment-section">
+            <div class="commitment-content">
+                <div class="commitment-text">
+                    <h2>Compromiso con el Pueblo</h2>
+                    <p>
+                        Mi compromiso va más allá de las palabras. Es un trabajo diario, 
+                        cercano a la gente, escuchando sus necesidades y actuando con 
+                        transparencia y responsabilidad.
+                    </p>
+                    <p>
+                        Creo firmemente en un Perú donde todos tengamos las mismas 
+                        oportunidades de desarrollo, donde la educación y la salud sean 
+                        derechos garantizados, y donde el trabajo honesto sea recompensado.
+                    </p>
+                    <p>
+                        Este es un compromiso de largo plazo, construyendo día a día 
+                        un país mejor para nuestros hijos y las futuras generaciones.
+                    </p>
+                </div>
+                <div class="commitment-image">
+                    <i class="fas fa-image"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proposals Section -->
+        <section class="proposals-section">
+            <div class="section-header">
+                <h2>Propuestas de Acción</h2>
+                <p>Iniciativas concretas para transformar el Perú</p>
+            </div>
+            <div class="proposals-list">
+                <div class="proposal-item">
+                    <div class="proposal-number">1</div>
+                    <div class="proposal-content">
+                        <h4>Fortalecimiento de la Educación Técnica</h4>
+                        <p>
+                            Crear centros de formación técnica de excelencia en todo el país, 
+                            con infraestructura moderna y alianzas con el sector privado para 
+                            garantizar empleabilidad.
+                        </p>
+                    </div>
+                </div>
+                <div class="proposal-item">
+                    <div class="proposal-number">2</div>
+                    <div class="proposal-content">
+                        <h4>Apoyo Integral a PYMES</h4>
+                        <p>
+                            Programa de financiamiento con tasas preferenciales, capacitación 
+                            empresarial y simplificación administrativa para pequeños y medianos 
+                            empresarios.
+                        </p>
+                    </div>
+                </div>
+                <div class="proposal-item">
+                    <div class="proposal-number">3</div>
+                    <div class="proposal-content">
+                        <h4>Salud Digital Descentralizada</h4>
+                        <p>
+                            Implementar telemedicina y expedientes digitales en zonas rurales, 
+                            mejorando el acceso a especialistas y reduciendo las brechas en 
+                            atención médica.
+                        </p>
+                    </div>
+                </div>
+                <div class="proposal-item">
+                    <div class="proposal-number">4</div>
+                    <div class="proposal-content">
+                        <h4>Desarrollo Sostenible Local</h4>
+                        <p>
+                            Fomentar proyectos de economía verde y turismo sostenible en 
+                            comunidades, generando empleo y protegiendo el medio ambiente.
+                        </p>
+                    </div>
+                </div>
+                <div class="proposal-item">
+                    <div class="proposal-number">5</div>
+                    <div class="proposal-content">
+                        <h4>Transparencia y Rendición de Cuentas</h4>
+                        <p>
+                            Plataformas digitales abiertas para seguimiento de proyectos públicos, 
+                            presupuestos participativos y mecanismos de fiscalización ciudadana.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="values-section">
+            <div class="section-header">
+                <h2>Nuestros Valores</h2>
+                <p>Los principios que nos guían</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Inclusión</h4>
+                    <p>Política para todos, sin discriminación ni exclusión.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h4>Transparencia</h4>
+                    <p>Rendición de cuentas clara y accesible a la ciudadanía.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4>Servicio</h4>
+                    <p>Compromiso genuino con el bienestar del pueblo peruano.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4>Honestidad</h4>
+                    <p>Integridad y ética en cada acción y decisión política.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Únete al Cambio</h2>
+            <p>Juntos podemos construir el Perú que todos soñamos</p>
+            <div class="cta-buttons">
+                <a href="contacto.html" class="cta-button">
+                    <i class="fas fa-envelope"></i> Contactar
+                </a>
+                <a href="#" class="cta-button secondary">
+                    <i class="fas fa-users"></i> Ser Voluntario
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Giovanna Bedoya Maque. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Cerrar menú al hacer clic en un enlace (móvil)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Animación de entrada para elementos
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section, .pillar-card, .proposal-item, .value-card').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
